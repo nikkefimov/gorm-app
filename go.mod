@@ -10,3 +10,4 @@ require (
 	golang.org/x/text v0.20.0 // indirect
 	gorm.io/gorm v1.25.12 // indirect
 )
+
