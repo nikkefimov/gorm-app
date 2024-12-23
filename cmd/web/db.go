@@ -8,6 +8,8 @@ import (
 	"gorm.io/gorm"
 )
 
+// Connection to MySQL database.
+
 var DB *gorm.DB
 
 func ConnectDB() {
