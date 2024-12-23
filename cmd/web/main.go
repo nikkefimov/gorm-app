@@ -10,7 +10,7 @@ func main() {
 	http.HandleFunc("/login", loginPage)
 	http.HandleFunc("/create_user", createUserHandler)
 
-	log.Println("Server is running on http:localhost:8087/")
+	log.Println("Server is running on http://localhost:8087/")
 	log.Fatal(http.ListenAndServe(":8087", nil))
 
 }
