@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	ConnectDB()
+	//ConnectDB()
 	http.HandleFunc("/login", loginPage)
 	http.HandleFunc("/create_user", createUserHandler)
 

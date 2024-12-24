@@ -13,7 +13,7 @@ import (
 var DB *gorm.DB
 
 func ConnectDB() {
-	dsn := os.Getenv("DSN") // Update DNS with your database details for successful connect.
+	dsn := os.Getenv("DSN") // Update DSN with your database details for successful connect.
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {
