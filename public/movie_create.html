@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie create page</title>
+</head>
+<body>
+    <h1>Create movie</h1>
+    <form method="post" action="/movie_create">
+        <label>Title:</label>
+        <input type="text" name="title" required>
+        <label>Year:</label>
+        <input type="text" name="year" required>
+        <label>Genre:</label>
+        <input type="text" name="genre" required>
+        <label>Rating:</label>
+        <select name="rating">
+            <option value="good">Good</option>
+            <option value="excellent">Excellent</option>
+        </select>
+        <button type="submit">Create</button>
+    </form>
+</body>
+</html>

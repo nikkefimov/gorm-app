@@ -27,7 +27,7 @@ func createMoviePage(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		http.Redirect(w, r, "/movie", http.StatusFound)
+		http.Redirect(w, r, "/movie_page", http.StatusFound)
 		return
 	}
 
