@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 
@@ -51,7 +52,7 @@ func createUserHandler(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// If its a GET request, proces the registration form.
-	tmpl, _ := template.ParseFiles("templates/create_user.html")
+	tmpl, _ := template.ParseFiles("public/user_create.html")
 	tmpl.Execute(w, nil)
 }
 
@@ -75,11 +76,14 @@ func loginPage(w http.ResponseWriter, r *http.Request) {
 		// Save the session data.
 		session.Save(r, w)
 
+		// Success message.
+		fmt.Fprintln(w, "You are logged in!")
+
 		// Redirect to movie_create page after login.
 		http.Redirect(w, r, "/movie_create", http.StatusFound)
 		return
 	}
 	// Parse login page.
-	tmpl, _ := template.ParseFiles("templates/user_login.html")
+	tmpl, _ := template.ParseFiles("public/home.html")
 	tmpl.Execute(w, nil)
 }

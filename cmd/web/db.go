@@ -2,7 +2,6 @@ package main
 
 import (
 	"log"
-	"os"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -13,7 +12,7 @@ import (
 var DB *gorm.DB
 
 func ConnectDB() {
-	dsn := os.Getenv("DSN") // Update DSN with your database details for successful connect.
+	dsn := "" // Update DSN with your database details for successful connect.
 	var err error
 	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
 	if err != nil {

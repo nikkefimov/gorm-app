@@ -26,4 +26,6 @@ CREATE TABLE movies (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+check default mysql port: "mysql> SHOW GLOBAL VARIABLES LIKE 'PORT';"
 */
