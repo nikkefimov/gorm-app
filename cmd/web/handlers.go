@@ -56,3 +56,22 @@ func moviePage(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := template.ParseFiles("template/movie_page.html")
 	tmpl.Execute(w, movies)
 }
+
+// Find movie handler.
+func findMoviePage(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "POST" {
+		id, _ := strconv.Atoi(r.FormValue("id"))
+		var movie Movie
+		if err := DB.First(&movie, id).Error; err != nil {
+			http.Error(w, "Not found", http.StatusNotFound)
+			return
+		}
+
+		tmpl, _ := template.ParseFiles("public/movie_find.html")
+		tmpl.Execute(w, movie)
+		return
+	}
+
+	tmpl, _ := template.ParseFiles("public/movie_find.html")
+	tmpl.Execute(w, nil)
+}
