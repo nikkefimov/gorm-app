@@ -75,3 +75,12 @@ func findMoviePage(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := template.ParseFiles("public/movie_find.html")
 	tmpl.Execute(w, nil)
 }
+
+// Logout handler.
+func logoutPage(w http.ResponseWriter, r *http.Request) {
+	session, _ := store.Get(r, "session")
+	delete(session.Values, "userID")
+	session.Save(r, w)
+
+	http.Redirect(w, r, "/", http.StatusFound)
+}
