@@ -1,13 +1,4 @@
-/*home
-login
-create_user
-create_movie
-movie_page
-
-main
-db
-model
-
+/*
 users table:
 CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY,
 username VARCHAR(255) UNIQUE NOT NULL,
@@ -28,4 +19,6 @@ CREATE TABLE movies (
 );
 
 check default mysql port: "mysql> SHOW GLOBAL VARIABLES LIKE 'PORT';"
+
+fiber mux, fiber session, mysql, gorm, gotemplate
 */
