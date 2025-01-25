@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add a new movie</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="user-info">
+        <span id="username"></span>
+        <a href="/logout" class="button">logout</a>
+    </div>
+    <div class="container">
+        <h1>add a movie</h1>
+        <form action="/create-movie" method="POST">
+            <input type="text" name="title" placeholder="Movie Title" maxlength="25" required>
+            <select name="year" required>
+                <option value="">Select Year</option>
+                ${generateYearOptions()}
+            </select>
+            <select name="genre" multiple required>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="musicals">Musicals</option>
+                <option value="mystery">Mystery</option>
+                <option value="romance">Romance</option>
+                <option value="science fiction">Science Fiction</option>
+                <option value="sports">Sports</option>
+                <option value="thriller">Thriller</option>
+                <option value="western">Western</option>
+            </select>
+            <select name="rating" required>
+                <option value="">Select Rating</option>
+                ${generateRatingOptions()}
+            </select>
+            <button type="submit">add a movie</button>
+        </form>
+    </div>
+    <script>
+        function generateYearOptions() {
+            const currentYear = new Date().getFullYear();
+            let options = '';
+            for (let year = 1950; year <= currentYear; year++) {
+                options += `<option value="${year}">${year}</option>`;
+            }
+            return options;
+        }
+        
+        function generateRatingOptions() {
+            let options = '';
+            for (let rating = 1; rating <= 10; rating++) {
+                options += `<option value="${rating}">${rating}</option>`;
+            }
+            return options;
+        }
+    </script>
+</body>
+</html>
+
+<script>
+    // Flash message handling
+    window.onload = function() {
+        const flashMessage = '{{ .flash_message }}';
+        if (flashMessage) {
+            const flashDiv = document.createElement('div');
+            flashDiv.className = 'flash-message';
+            flashDiv.innerHTML = `
+                <p>${flashMessage}</p>
+                <button onclick="this.parentElement.remove()">OK</button>
+            `;
+            document.body.insertBefore(flashDiv, document.body.firstChild);
+        }
+    }
+</script>
