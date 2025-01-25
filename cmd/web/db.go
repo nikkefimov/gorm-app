@@ -18,4 +18,10 @@ func ConnectDB() {
 	if err != nil {
 		log.Fatalf("Error to connect DB: %v", err)
 	}
+
+	// Migrate DB
+	err = DB.AutoMigrate(&User{}, &Movie{})
+	if err != nil {
+		log.Fatal("Failed to migrate database", err)
+	}
 }

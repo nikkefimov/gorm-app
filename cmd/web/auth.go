@@ -1,14 +1,18 @@
-package main
+package auth
 
-import (
-	"fmt"
-	"html/template"
-	"net/http"
+import "github.com/gofiber/fiber/v2"
 
-	"github.com/gorilla/sessions"
-	"golang.org/x/crypto/bcrypt"
-)
+// GetSessionUserID is fetching user's ID from session.
+func GetSessionUserID(c *fiber.Ctx) uint {
+	sess, _ := session.Get(c)
+	userID := sess.Get("user_id")
+	if userID != nil {
+		return userID.(uint)
+	}
+	return 0
+}
 
+/*
 // Create a new cookie store for storing session data securely.
 var store = sessions.NewCookieStore([]byte("secret-key"))
 
@@ -87,3 +91,5 @@ func loginPage(w http.ResponseWriter, r *http.Request) {
 	tmpl, _ := template.ParseFiles("public/home.html")
 	tmpl.Execute(w, nil)
 }
+
+*/

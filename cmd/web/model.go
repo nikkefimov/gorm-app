@@ -1,4 +1,4 @@
-package main
+package model
 
 import "gorm.io/gorm"
 
@@ -6,7 +6,7 @@ import "gorm.io/gorm"
 
 type User struct {
 	gorm.Model
-	ID       uint   `gorm:"primary_key"`
+	ID       uint   `gorm:"primaryKey"`
 	Username string `gorm:"unique;not null"`
 	Password string `gorm:"not null"`
 	Movies   []Movie
@@ -14,7 +14,8 @@ type User struct {
 
 type Movie struct {
 	gorm.Model
-	ID     uint   `gorm:"primary_key"`
+	User   User   `form:"not null"`
+	ID     uint   `gorm:"primaryKey"`
 	Title  string `gorm:"unique;not null"`
 	Year   int    `gorm:"not null"`
 	Genre  string `gorm:"not null"`
