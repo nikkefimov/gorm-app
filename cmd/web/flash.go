@@ -4,14 +4,14 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-// FlashMiddleware manages flash messages across requests
+// FlashMiddleware manages flash messages across requests.
 func FlashMiddleware(c *fiber.Ctx) error {
 	sess, err := SessionStore.Get(c)
 	if err != nil {
 		return c.Next()
 	}
 
-	// Retrieve and clear flash message
+	// Retrieve and clear flash message.
 	flashMessage := sess.Get("flash_message")
 	if flashMessage != nil {
 		c.Locals("flash_message", flashMessage)
@@ -22,7 +22,7 @@ func FlashMiddleware(c *fiber.Ctx) error {
 	return c.Next()
 }
 
-// SetFlashMessage stores a flash message for the next request
+// SetFlashMessage stores a flash message for the next request.
 func SetFlashMessage(c *fiber.Ctx, message string) error {
 	sess, err := SessionStore.Get(c)
 	if err != nil {
