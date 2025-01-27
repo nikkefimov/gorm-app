@@ -136,7 +136,7 @@ func FindMovieHandler(c *fiber.Ctx) error {
 
 	if len(movies) == 0 {
 		SetFlashMessage(c, "Unfortunately, movie is not found")
-		return c.Redirect("/find-movie")
+		return c.Redirect("/find_movie")
 	}
 
 	return c.JSON(movies)

@@ -45,6 +45,7 @@ func main() {
 	app.Post("/register", RegisterHandler)
 	app.Post("/login", LoginHandler)
 	app.Get("/logout", LogoutHandler)
+	app.Post("/create_movie", CreateMovieHandler)
 
 	// Routes protection.
 	protected := app.Group("/", AuthMiddleware)
@@ -54,14 +55,14 @@ func main() {
 			"username": sess.Get("username"),
 		})
 	})
-	protected.Get("/create-movie", func(c *fiber.Ctx) error {
-		return c.Render("create-movie", fiber.Map{})
+	protected.Get("/create_movie", func(c *fiber.Ctx) error {
+		return c.Render("create_movie", fiber.Map{})
 	})
-	protected.Post("/create-movie", CreateMovieHandler)
-	protected.Get("/find-movie", func(c *fiber.Ctx) error {
-		return c.Render("find-movie", fiber.Map{})
+	protected.Post("/create_movie", CreateMovieHandler)
+	protected.Get("/find_movie", func(c *fiber.Ctx) error {
+		return c.Render("find_movie", fiber.Map{})
 	})
-	protected.Get("/search-movie", FindMovieHandler)
+	protected.Get("/search_movie", FindMovieHandler)
 	protected.Get("/movies", ListUserMoviesHandler)
 
 	// Start server (set port your port if need).

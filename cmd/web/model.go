@@ -9,6 +9,7 @@ import (
 // User represents the user account in the database
 type User struct {
 	gorm.Model
+	//UserID   uint   `gorm:"not null"`
 	Username string `gorm:"unique;not null;size:15"`
 	Password string `gorm:"not null"`
 }

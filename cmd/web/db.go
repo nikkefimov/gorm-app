@@ -19,10 +19,10 @@ func ConnectDB() {
 		log.Fatalf("Error to connect DB: %v", err)
 	}
 
-	/*// Migrate DB.
-	err = DB.AutoMigrate(&user{}, &movie{})
+	// Migrate DB.
+	err = db.AutoMigrate(&User{}, &Movie{})
 	if err != nil {
 		log.Fatal("Failed to migrate database", err)
-	}*/
+	}
 	log.Println("Database initialized successfully")
 }
